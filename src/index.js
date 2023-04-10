@@ -27,9 +27,7 @@ function onInputChange(evt) {
 function renderMarkupOnPage(countries) {
   if (countries.length > 10) {
     clearPage();
-    Notify.info(
-      'Знайдено забагато збігів. Веедіть будь-ласка більш точний запит!'
-    );
+    Notify.info('Too many matches found. Please, enter a more specific name.');
   } else if (countries.length >= 2 && countries.length <= 10) {
     clearPage();
     markupOfCountryList(countries);
@@ -48,7 +46,7 @@ function markupOfCountryList(countries) {
             </li>`;
     })
     .join('');
-  refs.countryList.innerHTML = markupOfAllCountries;
+  refs.countryList.insertAdjacentHTML('beforeend', markupOfAllCountries);
 }
 
 function markupOfOneCountry(countries) {
@@ -64,10 +62,10 @@ function markupOfOneCountry(countries) {
     <p><b>Languages:</b> ${Object.values(languages)} </p>`;
     })
     .join('');
-  refs.countryInfo.innerHTML = markupOfOneCountry;
+  refs.countryInfo.insertAdjacentHTML('beforeend', markupOfOneCountry);
 }
 
-function clearPage() {
+export function clearPage() {
   refs.countryList.innerHTML = '';
   refs.countryInfo.innerHTML = '';
 }
