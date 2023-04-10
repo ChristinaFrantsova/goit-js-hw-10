@@ -18,7 +18,7 @@ function onInputChange(evt) {
   if (countryName !== '') {
     fetchCountries(countryName)
       .then(data => renderMarkupOnPage(data))
-      .catch(console.log);
+      .catch(clearPage);
   } else {
     clearPage();
   }
